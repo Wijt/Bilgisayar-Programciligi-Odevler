@@ -1,0 +1,5 @@
+Merhaba hocam,
+Slider için yazılan navigasyon css kodları aynı zamanda anchor olarak çalışıp site içinde yukarı aşağı oynatma yaptığı için ayrı bir html sayfasında sliderı oluşturup iframe sandbox ile siteye ekledim.
+Herhangi bir problem olması durumunda siteye
+https://iamfurkan.com/projeler/okul/php/odev-1/
+adresinden de ulaşabilirsiniz.
