@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aşama 1 ve 2</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js"
+        integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g=="
+        crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            background-color: rgb(29, 101, 104);
+            font-weight: bold;
+            color: white;
+            text-shadow: 0px 3px 8px black;
+        }
+
+        .puan-bar {
+            margin-top: 15px;
+        }
+
+        .grid {
+            display: grid;
+            background-color: black;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-column-gap: 2px;
+            grid-row-gap: 2px;
+        }
+
+        .cell {
+            background-color: white;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+
+        .button {
+            border-radius: 10px;
+            background-color: rgb(7, 31, 32);
+            color: azure;
+            width: fit-content;
+            padding: 10px;
+            cursor: pointer;
+            font-weight: bolder;
+            transition: ease-in-out 0.5s;
+            box-shadow: 0 1px 2px 0px #000;
+        }
+
+        .button:hover {
+            box-shadow: 0 2px 5px 2px #000;
+        }
+
+        .container {
+            height: 200px;
+            position: relative;
+        }
+
+        .vertical-center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+        <div class="container">
+            <div class="main vertical-center">
+                <div id="matrix" class="grid" style="padding:2px">
+ 
+                    <div id="0" class="cell"></div>
+                    <div id="1" class="cell"></div>
+                    <div id="2" class="cell"></div>
+                    <div id="3" class="cell"></div>
+ 
+                    <div id="4" class="cell"></div>
+                    <div id="5" class="cell"></div>
+                    <div id="6" class="cell"></div>
+                    <div id="7" class="cell"></div>
+ 
+                    <div id="8" class="cell"></div>
+                    <div id="9" class="cell"></div>
+                    <div id="10" class="cell"></div>
+                    <div id="11" class="cell"></div>
+ 
+                    <div id="12" class="cell"></div>
+                    <div id="13" class="cell"></div>
+                    <div id="14" class="cell"></div>
+                    <div id="15" class="cell"></div>
+                
+                </div>
+                    <div class="puan-bar">
+                        Puan:
+                        <span id="puan">
+                            0
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="button" onclick="startGame()">
+                Start Game
+            </div>
+    </center>
+    <script>
+        $.fn.shuffle = function () {
+            for (var j, x, i = this.length; i; j = Math.floor(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+            return this;
+        };
+        function createMatrix(n, isDummy) {
+            $("#matrix").empty();
+            $("#matrix").css(
+                {
+                    "grid-template-columns": `repeat(${n}, 1fr)`,
+                    "grid-template-rows": `repeat(${n}, 1fr)`,
+                    "width": (n * 20) + (n - 1) * 2,
+                }
+            );
+            n = n * n;
+            if (isDummy) {
+                for (let i = 0; i < n; i++) {
+                    $("#matrix").append(`<div id="${i}" class="cell"></div>`);
+                }
+            } else {
+                for (let i = 0; i < n; i++) {
+                    $("#matrix").append(`<div id="${i}" onClick="cellClick(${i})" class="cell"></div>`);
+                }
+            }
+        }
+        function SelectCell() {
+            cell = $(".cell").shuffle().slice(0, 1);
+            randomColor = '#' + ('000000' + Math.floor(Math.random() * 16777215).toString(16)).slice(-6);
+            cell.css({ "background-color": randomColor });
+            cell.addClass("selected");
+        }
+        
+        function cellClick(id) {
+            //kullanıcı bu tur tıklama yaptıysa çık
+            if (isClickedOne) return;
+            //tıklama yapılmasını işaretle
+            isClickedOne = true;
+            //renkli kareye mi tıklandı?
+            if ($("#" + id).hasClass("selected")) {
+                //puanına +10 ekle
+                updatePoint(10)
+            } else {
+                //puanından -5 çıkar
+                updatePoint(-5)
+            }
+        }
+
+        function updatePoint(p) {
+            point += p;
+            $("#puan").html(point);
+        }
+
+        point = 0;
+        isClickedOne = true;
+        var timeOutID;
+        function game(speed, matrixSize) {
+            //eğer sıradaki tur geldiyse ve kullanıcı tıklama yapmadıysa
+            if (!isClickedOne) updatePoint(-5);
+
+            createMatrix(matrixSize);
+            SelectCell();
+            //Tıklama hakkını resetle
+            isClickedOne = false;
+
+            if (point >= 100) {
+                timeOutID = setTimeout(game.bind(null, 800, 6), speed);
+            } else {
+                timeOutID = setTimeout(game.bind(null, 1000, 4), speed);
+            }
+        }
+
+        //game(1000, 4);
+        createMatrix(4, true);
+
+        function startGame() {
+            clearTimeout(timeOutID);
+            point = 0;
+            updatePoint(0);
+            isClickedOne = true;
+
+            game(1000, 4);
+        }
+    </script>
+</body>
+
+</html>
