@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1920, initial-scale=1.0">
+    <title>JS Proje Ödevi</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- Required Core Stylesheet -->
+    <link rel="stylesheet" href="lib/glide-3.4.1/dist/css/glide.core.min.css" />
+
+    <!-- Optional Theme Stylesheet -->
+    <link rel="stylesheet" href="lib/glide-3.4.1/dist/css/glide.theme.min.css" />
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="left" id="row-container">
+        </div>
+        <div class="right">
+            <div class="logo-container row">
+                <div class="logo"></div>
+            </div>
+            <div class="slider-container row">
+                <div class="glide">
+                    <div class="glide__track" data-glide-el="track" style="margin-top: -16px;">
+                        <ul class="glide__slides">
+                        </ul>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">←</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">→</button>
+                    </div>
+                </div>
+                <script src="lib/glide-3.4.1/dist/glide.min.js"></script>
+
+                <script>
+                    var parentH = parseInt($(".slider-container").height());
+                    var parentW = parseInt($(".slider-container").width());
+                    for(var i=1;i<=5;i++){
+                        $(".glide__slides").append(`<li class="glide__slide"><img style="object-fit:cover;" width="${parentW}" height="${parentH}" src="img/slider-${i}.jpg" alt=""></li>`);
+                    }
+                    var glide = new Glide('.glide', {
+                        autoplay: 3000,
+                        type: "carousel",
+                        gap:0,
+                        perView: 1,
+                        hoverpause: false,
+                    });
+                    glide.mount();
+                </script>
+            </div>
+            <div class="announcement">
+                <style>
+                    .Marquee {
+                        font-family: Arial, sans-serif;
+                        font-size: 2em;
+                        color: #FFFFFF;
+                        vertical-align: middle;
+                        line-height: 3em;
+                    }
+                </style>
+
+                <marquee class="Marquee" direction="left" scrollamount="12" behavior="scroll">2021-2022 Eğitim – Öğretim
+                    Yılı Lisans ve Ön Lisans bölüm / program ücretleri belirlenmiş, erken kayıt yenileyecek
+                    öğrencilerimiz için uygulanacak olan indirimli ödeme planları 31 Temmuz 2021 tarihine kadar geçerli
+                    olacak ödeme kolaylıklarını içerecek şekilde ois.istinye.edu.tr adresinde belirtilmiştir.
+
+                    2021-2022 eğitim ve öğretim dönemi ücretleri %8 KDV’li olarak hesaplanmış olup eğitimde uygulanan
+                    katma değer vergisinde yapılan değişiklik hakkında bilgilendirme metni aşağıdadır.</marquee>
+            </div>
+            <div class="times row">
+                <div class="now-time blue-gradient">
+                    <span class="title">Şu an</span>
+                    <div class="time"></div>
+                </div>
+                <div class="remaining-time orange-gradient">
+                    <span class="title">Kalan Süre</span>
+                    <div class="time">00:05:09</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function n(num, len = 2) {
+            return `${num}`.padStart(len, '0');
+        }
+
+        //created with function
+        var rows = [
+            { "title": "1. Ders", "time-one": "08:00", "time-two": "08:40" },
+            { "title": "Teneffüs", "time-one": "08:40", "time-two": "08:50" },
+            { "title": "2. Ders", "time-one": "08:50", "time-two": "09:30" },
+            { "title": "Teneffüs", "time-one": "09:30", "time-two": "09:40" },
+            { "title": "3. Ders", "time-one": "09:40", "time-two": "10:20" },
+            { "title": "Teneffüs", "time-one": "10:20", "time-two": "10:30" },
+            { "title": "4. Ders", "time-one": "10:30", "time-two": "11:10" },
+            { "title": "Teneffüs", "time-one": "11:10", "time-two": "11:20" },
+            { "title": "5. Ders", "time-one": "11:20", "time-two": "12:00" },
+            { "title": "Teneffüs", "time-one": "12:00", "time-two": "12:10" },
+            { "title": "6. Ders", "time-one": "12:10", "time-two": "12:50" },
+            { "title": "Öğlen Arası", "time-one": "12:50", "time-two": "13:30" },
+            { "title": "7. Ders", "time-one": "13:30", "time-two": "14:10" },
+            { "title": "Teneffüs", "time-one": "14:10", "time-two": "14:15" },
+            { "title": "8. Ders", "time-one": "14:15", "time-two": "14:55" },
+            { "title": "Teneffüs", "time-one": "14:55", "time-two": "15:05" },
+            { "title": "9. Ders", "time-one": "15:05", "time-two": "15:45" },
+            { "title": "Teneffüs", "time-one": "15:45", "time-two": "15:50" },
+            { "title": "10. Ders", "time-one": "15:50", "time-two": "16:30" },
+            { "title": "Teneffüs", "time-one": "16:30", "time-two": "16:35" },
+            { "title": "11. Ders", "time-one": "16:35", "time-two": "17:15" },
+            { "title": "Teneffüs", "time-one": "17:15", "time-two": "17:20" },
+            { "title": "12. Ders", "time-one": "17:20", "time-two": "18:00" },
+            { "title": "PAYDOS", "time-one": "18:00", "time-two": "08:00" }
+        ];
+        appendRows();
+        app();
+
+        setInterval(function () { app(); }, 1000);
+
+        var selectedRow = 0;
+
+        
+        function app() {
+            var dt = new Date($.now());
+            var now = Date.parse(`01/01/2011 ${dt.getHours()}:${dt.getMinutes()}:${dt.getSeconds()}`);
+            var time = n(dt.getHours()) + ":" + n(dt.getMinutes());
+
+            var newSelected = getRowIndex();
+
+            var time2 = rows[newSelected]["time-two"].split(":");
+            time2 = new Date(Date.parse(`01/01/2011 ${time2[0]}:${time2[1]}:00`));
+
+            var remaining = new Date(time2-now);
+
+            $(".now-time > .time").html(time);
+            $(".remaining-time > .time").html(n(remaining.getHours()-2)+":"+n(remaining.getMinutes())+":"+n(remaining.getSeconds()));
+
+            if (selectedRow != newSelected) {
+                selectedRow = newSelected;
+                selectRow(selectedRow);
+                if(!rows[selectedRow]["title"].includes("Ders")){
+                    //const audio = new Audio("lib/zil.mp3");
+                    //audio.play();
+                }
+            }
+        }
+
+        function selectRow(rowID) {
+            $(".selected").removeClass("selected orange-gradient");
+            $(`#row-container .l-row:nth-child(${rowID + 1})`).addClass("selected orange-gradient");
+        }
+
+        //initiliaze every row in rows
+        function appendRows() {
+            $("#row-container").html("");
+            for (var i = 0; i < rows.length; i++)
+                addRow(rows[i]);
+        }
+        //this written for the create rows
+        function createRows() {
+            var dt = new Date(2021, 05, 18, 08, 00);
+            for (var i = 0; i < 12; i++) {
+
+                var h = dt.getHours();
+                var m = dt.getMinutes();
+                var time1 = n(h) + ":" + n(m);
+
+                dt.setMinutes(dt.getMinutes() + 40);
+                h = dt.getHours();
+                m = dt.getMinutes();
+                var time2 = n(h) + ":" + n(m);
+
+                rows.push(
+                    {
+                        "title": `${i + 1}. Ders`,
+                        "time-one": time1,
+                        "time-two": time2
+                    }
+                );
+
+                time1 = time2;
+                var gapName = i == 5 ? "Öğlen Arası" : "Teneffüs";
+                var gapLen = i == 5 ? 40 : 10;
+                if (i > 5) gapLen = 5;
+                if (i == 7) gapLen = 10;
+                dt.setMinutes(dt.getMinutes() + gapLen);
+                h = dt.getHours();
+                m = dt.getMinutes();
+                time2 = n(h) + ":" + n(m);
+                rows.push(
+                    {
+                        "title": gapName,
+                        "time-one": time1,
+                        "time-two": time2
+                    }
+                );
+
+                addRow(rows[i * 2]);
+                addRow(rows[i * 2 + 1]);
+            }
+
+        }
+        //Append row to html
+        function addRow(row) {
+            $("#row-container").append(`<div class="row l-row"><span class="l-r-title">${row["title"]}</span><span class="l-r-time">${row["time-one"]}&nbsp&nbsp&nbsp&nbsp-${row["time-two"]}</span></div>`);
+        }
+        
+        function getRowIndex() {
+            var dt = new Date($.now());
+            //var dt = new Date(2011, 01, 01, 9, 30);
+            var now = Date.parse(`01/01/2011 ${dt.getHours()}:${dt.getMinutes()}:00`);
+            var result = 0;
+            for (var i = 0; i < rows.length-1; i++) {
+                time1 = rows[i]["time-one"].split(":");
+                time1 = Date.parse(`01/01/2011 ${time1[0]}:${time1[1]}:00`);
+                if (time1 > now) {
+                    result = i - 1;
+                    break;
+                }
+            }
+            if (dt.getHours()>18 || dt.getHours()<8) return rows.length - 1;
+            return result;
+        }
+    </script>
+</body>
+
+</html>

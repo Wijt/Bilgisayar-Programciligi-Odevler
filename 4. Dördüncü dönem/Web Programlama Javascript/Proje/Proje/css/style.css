@@ -1,0 +1,117 @@
+body {
+    margin: 0px auto;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.blue-gradient{
+    background: rgb(22,74,114);
+    background: linear-gradient(0deg, rgba(22,74,114,1) 0%, rgba(171,219,255,1) 100%);
+}
+
+.orange-gradient{
+    background: rgb(109,33,1);
+    background: linear-gradient(0deg, rgba(109,33,1,1) 0%, rgb(255, 146, 37) 100%);
+}
+
+.row {
+    width: 100%;
+    box-sizing: border-box;
+    height: fit-content;
+}
+
+.l-row{
+    background-color:#16375A;
+    border-top: 1px solid #1F4E80 !important;
+    border-bottom: 1px solid #1F4E80 !important;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 4.16%;
+    padding-top: 10px;
+}
+.l-r-title{
+    font-weight: bolder;
+}
+
+.l-r-time{
+    float: right;
+}
+
+
+.container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color:grey;
+}
+
+.left {
+    background-color: #3C5D80;
+    width: 25%;
+    height: 100%;
+    float: left;
+}
+
+.right {
+    background-color: #fcfcfc62;
+    width: 75%;
+    height: 100%;
+    float: right;
+}
+
+.logo-container {
+    background-color:white;
+    height: 10%;
+    float: left;
+    padding: 10px;
+}
+
+.logo {
+    background-image: url("../img/logo.png");
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: contain;
+    width:300px;
+}
+.logo-container > h2 {
+    color: blue;
+}
+
+.slider-container {
+    background-color: #3C5899;
+    height: 62%;
+    display: flex;
+}
+.slider-container > * {
+    height: 100%;
+}
+.announcement{
+    background-color: #C55B11;
+    height: 15%;
+}
+
+.times{
+    background-color:blue;
+    height: 13%;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.now-time, .remaining-time{
+    width: 50%;
+    height: calc(100% - 20px);
+    padding-top: 20px;
+    float:left;
+    color: white;
+    vertical-align: middle;
+    justify-content: center;
+}
+
+.remaining-time > .title, .now-time > .title{
+    margin-top: 20px;
+    font-size: 25px;
+}
+
+.remaining-time > .time, .now-time > .time{
+    font-size: 55px;
+} 
