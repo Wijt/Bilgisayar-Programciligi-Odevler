@@ -1,0 +1,63 @@
+Bir emlak ofisi için aşağıdaki ilişkisel veritabanı şemasına sahip olduğunuzu varsayınız:
+
+
+
+EmlakOfisi (ofisID, cadde, sehir, postaKodu)
+
+Calisan (calisanID, adi, soyadi, pozisyon, cinsiyet, maas, ofisID)
+
+KiralikMulk (mulkID, cadde, sehir, postaKodu, tip, odaSayisi, kira, mulkSahibiID, calisanID, ofisID, kiralanmaTarihi)
+
+Musteri (musteriID, adi, soyadi, tel, maxKira)
+
+MulkSahibi (mulkSahibiID, adi, soyadi, adres, tel)
+
+MulkGösterme (musteriID, mulkID, gostermeZamani, yorum)
+
+Kayit (musteriID, ofisID, calisanID, kayitTarihi)
+
+
+
+
+
+1 - Öncelikle her ilişki için uygun birincil ve yabancı anahtarları belirleyiniz. Ardından SQL kullanarak aşağıdaki sorguları oluşturunuz.
+
+Not:SQL sorgularını doğrudan mySQL üzerinde çalıştırarak ödevinizi kontrol edeceğim, lütfen veritabanını oluşturup tüm SQL sorgularınızı çalıştırarak gönderiniz. 
+
+SQL Sorguları
+
+
+
+2 - "Galata Cad" caddesinde bulunan ofiste çalışanlar tarafından yönetilen mülklerin ID, cadde, sehir ve kira bilgilerini listeleyiniz.
+
+
+
+3 - Ofis bulunmayan ancak kiralık mülklerin bulunduğu tüm şehirleri listeleyiniz.
+
+
+
+4 - Kiralık bir mülkü gören tüm müşterilerin isimlerini ve yorumlarını listeleyiniz.
+
+
+
+5 - Kayıtlı müşteri olupta hiç mülk gösterimi yapılmamış müşterileri listeleyiniz 
+
+
+
+6 - Maaşları ortalama maaştan yüksek olan tüm çalışanları listeleyiniz
+
+
+
+7 - Her bir çalışan tarafından yönetilen mülklerin sayısını bulunuz
+
+
+
+8 - En çok gösterimi yapılmış olan mülkü, sehir, kira, oda sayısı bilgileriyle gösteriniz.
+
+
+
+9 - Bir müşteri silindiğinde mülk gösterme ve kayıt tablolarındaki müşteri kayıtlarını da silen bir trigger yazınız
+
+
+
+10 - Bir çalışanın emlak ofisine kazandırdığı geliri hesaplayan bir prosedür yazınız. Her kiralanan mülk icin %3 komisyon alınmaktadır ve kiralanan mülkler icin kiralanma tarihi alanı atanmış olmalıdır. 
