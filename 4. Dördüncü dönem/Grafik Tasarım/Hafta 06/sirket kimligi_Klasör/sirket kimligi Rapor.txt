@@ -1,0 +1,42 @@
+Paket Raporu
+
+-----------------------------------------------------------------------------
+Belge:
+Adý: sirket kimligi.ai
+Renk Modu: RGB renk
+Renk Profili: sRGB IEC61966-2.1
+Cetvel Birimleri: piksel
+Çalýþma Yüzeyi Boyutlarý: 7680 px x 4320 px
+Görüntüleri Anahat Modunda Göster: KAPALI
+Deðiþtirilen Fontlarý Vurgula: KAPALI
+Deðiþtirilen Glifleri Vurgula: KAPALI
+Metin Düzenlenebilirliðini Koru
+Renkli Kaðýda Benzet: KAPALI
+
+-----------------------------------------------------------------------------
+Spot Renk Nesneleri:
+
+-----------------------------------------------------------------------------
+Eksik Fontlar:YOK
+
+-----------------------------------------------------------------------------
+Paketlenmeyen Korumalý Fontlar:YOK
+
+-----------------------------------------------------------------------------
+Fontlar:
+Myriad Pro (OTF)
+Open Sans SemiBold (TrueType)
+Open Sans ExtraBold (TrueType)
+Open Sans Bold (TrueType)
+
+-----------------------------------------------------------------------------
+Gömülü Fontlar:
+YOK
+
+-----------------------------------------------------------------------------
+Eksik Baðlantýlar:
+YOK
+
+-----------------------------------------------------------------------------
+Baðlantýlý Görseller:
+YOK
